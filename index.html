@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GHMC Login</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="gov-header">
+  <div class="gov-left">
+    <img src="images/telangana-logo.png" alt="Telangana Govt">
+    <img src="images/telangana-rising.png" alt="Telangana Rising">
+  </div>
+
+  <div class="gov-center">
+    <h1>GREATER HYDERABAD MUNICIPAL CORPORATION</h1>
+    <h2>గ్రేటర్ హైదరాబాద్ మున్సిపల్ కార్పొరేషన్</h2>
+  </div>
+
+  <div class="gov-right">
+    <img src="images/ghmc-logo.png" alt="GHMC">
+  </div>
+</header>
+
+<!-- ================= LOGIN SECTION ================= -->
+<section class="hero">
+
+  <h2>Log in</h2>
+
+  <!-- TOGGLE -->
+  <div class="login-toggle">
+    <button id="citizenBtn" class="active" onclick="showCitizenLogin()">As Citizen</button>
+    <button id="adminBtn" onclick="showAdminLogin()">As Admin</button>
+  </div>
+
+  <!-- ========== CITIZEN LOGIN ========== -->
+  <form id="citizenLoginForm">
+    <label>Mobile Number</label>
+    <input type="tel" id="loginMobile" required>
+
+    <label>Password</label>
+    <input type="password" id="loginPassword" required>
+
+    <button class="btn" type="submit">Login</button>
+
+    <p>
+      New User?
+      <a href="register.html">Register Here</a>
+    </p>
+  </form>
+  <div class="track-block">
+  <h3>Want to track your complaint?</h3>
+  <a href="track.html" class="track-btn">Track Complaint</a>
+</div>
+
+  <!-- ========== ADMIN LOGIN ========== -->
+  <form id="adminLoginForm" style="display:none;">
+    <label>Employee ID</label>
+    <input type="text" id="adminId" required>
+
+    <label>Password</label>
+    <input type="password" id="adminPassword" required>
+
+    <button class="btn" type="submit">Admin Login</button>
+
+    <p>
+      New Employee?
+      <a href="employee-register.html">Register Here</a>
+    </p>
+  </form>
+
+</section>
+
+<!-- SCRIPTS -->
+<script src="js/auth.js"></script>
+<script src="js/admin-auth.js"></script>
+
+<script>
+  function showCitizenLogin() {
+    document.getElementById("citizenLoginForm").style.display = "block";
+    document.getElementById("adminLoginForm").style.display = "none";
+    document.getElementById("citizenBtn").classList.add("active");
+    document.getElementById("adminBtn").classList.remove("active");
+  }
+
+  function showAdminLogin() {
+    document.getElementById("citizenLoginForm").style.display = "none";
+    document.getElementById("adminLoginForm").style.display = "block";
+    document.getElementById("adminBtn").classList.add("active");
+    document.getElementById("citizenBtn").classList.remove("active");
+  }
+</script>
+
+</body>
+</html>
