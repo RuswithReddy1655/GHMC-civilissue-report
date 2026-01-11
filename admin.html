@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>GHMC Admin Panel</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>GHMC Admin Dashboard</h1>
+  <nav>
+    <a href="admin.html">Home</a>
+    <a href="#" onclick="adminLogout()" style="color:red;">Logout</a>
+  </nav>
+</header>
+
+<section class="hero">
+
+  <!-- ===== ADMIN OVERVIEW ===== -->
+  <h2>Admin Overview</h2>
+
+  <div class="stats">
+    <div class="stat-card">
+      <h3>Total Complaints</h3>
+      <p id="totalCount">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Ongoing Complaints</h3>
+      <p id="progressCount">0</p>
+    </div>
+
+    <div class="stat-card">
+      <h3>Resolved Complaints</h3>
+      <p id="resolvedCount">0</p>
+    </div>
+  </div>
+
+  <hr>
+
+  <!-- ===== COMPLAINT LIST (IMPORTANT) ===== -->
+  <h2>All Complaints</h2>
+  <div id="adminComplaints"></div>
+
+  <hr>
+
+  <!-- ===== ANALYTICS ===== -->
+  <h2>Complaint Analytics</h2>
+  <canvas id="statusPieChart" width="300"></canvas>
+  <br><br>
+  <canvas id="statusBarChart" width="300"></canvas>
+
+</section>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<!-- Admin Logic -->
+<script src="js/admin.js"></script>
+
+<!-- Admin Auth -->
+<script src="js/admin-auth.js"></script>
+<script>
+  checkAdminAuth();
+</script>
+
+</body>
+</html>

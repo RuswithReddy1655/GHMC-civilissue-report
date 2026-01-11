@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Employee Registration</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>GHMC Employee Registration</h1>
+</header>
+
+<section class="hero">
+
+  <form id="employeeRegisterForm">
+
+    <label>Name</label><br>
+    <input type="text" id="empName" required><br><br>
+
+    <label>Mobile Number</label><br>
+    <input type="tel" id="empMobile" required><br><br>
+
+    <label>Department</label><br>
+    <select id="empDepartment" required>
+      <option value="">Select Department</option>
+      <option>Solid Waste Management</option>
+      <option>Water Works</option>
+      <option>Road Maintenance</option>
+      <option>Electrical</option>
+    </select><br><br>
+
+    <label>Employee ID</label><br>
+    <input type="text" id="empId" required><br><br>
+
+    <label>Designation</label><br>
+    <input type="text" id="empDesignation" required><br><br>
+
+    <label>Password</label><br>
+    <input type="password" id="empPassword" required><br><br>
+
+    <button class="btn" type="submit">Register</button>
+
+  </form>
+
+</section>
+
+<script src="js/employee-register.js"></script>
+
+</body>
+</html>

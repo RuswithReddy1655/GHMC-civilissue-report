@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Report Issue</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <h1>Report Civic Issue</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="complaints.html">My Complaints</a>
+  </nav>
+</header>
+
+<section class="hero">
+
+  <form id="issueForm">
+
+    <label>Issue Type</label><br>
+    <select id="issueType" required>
+      <option value="">Select Issue</option>
+      <option>Garbage</option>
+      <option>Water</option>
+      <option>Road</option>
+      <option>Electricity</option>
+      <option>Others</option>
+    </select><br><br>
+
+    <label>GHMC Zone</label><br>
+    <select id="zoneSelect" required>
+      <option value="">Select Zone</option>
+    </select><br><br>
+
+    <label>GHMC Circle</label><br>
+    <select id="circleSelect" required disabled>
+      <option value="">Select Circle</option>
+    </select><br><br>
+
+    <label>GHMC Ward</label><br>
+    <select id="wardSelect" required disabled>
+      <option value="">Select Ward</option>
+    </select><br><br>
+
+    <label>Issue Address</label><br>
+    <input id="address" type="text" placeholder="Enter issue location" required><br><br>
+
+    <!-- 📷 PHOTO UPLOAD -->
+    <label>Upload / Capture Issue Photo</label><br>
+    <input
+      type="file"
+      id="issuePhoto"
+      accept="image/*"
+      capture="environment"
+      required
+    ><br><br>
+
+    <!-- 🔍 PREVIEW + DELETE -->
+    <div id="photoContainer">
+      <img
+        id="photoPreview"
+        style="max-width:100%; display:none; margin-bottom:10px;"
+      >
+
+      <button
+        type="button"
+        id="removePhotoBtn"
+        style="
+          display:none;
+          background:#b00020;
+          color:#fff;
+          border:none;
+          padding:8px 12px;
+          border-radius:4px;
+          cursor:pointer;
+        "
+      >
+        ❌ Remove Photo
+      </button>
+    </div>
+
+    <br>
+
+    <!-- ✅ SUBMIT -->
+    <button class="btn" type="submit">
+      Submit Complaint
+    </button>
+
+  </form>
+
+</section>
+
+<!-- 🔐 AUTH CHECK -->
+<script src="js/auth.js"></script>
+<script>
+  checkAuth();
+</script>
+
+<!-- 🧠 REPORT LOGIC -->
+<script src="js/script.js"></script>
+
+</body>
+</html>
