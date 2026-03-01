@@ -1,105 +1,193 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <title>Report Issue</title>
-  <link rel="stylesheet" href="css/style.css">
+    <title>Report Issue - GHMC</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        body{
+            margin:0;
+            background:#eef2f5;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        /* =========================
+           LAYOUT
+        ========================= */
+        .wrapper{
+            display:flex;
+            height:100vh;
+        }
+
+        /* =========================
+           SIDEBAR (same as dashboard)
+        ========================= */
+        .sidebar{
+            width:240px;
+            background:#0f2d4d;
+            color:white;
+            display:flex;
+            flex-direction:column;
+            padding-top:20px;
+        }
+
+        .sidebar h4{
+            text-align:center;
+            margin-bottom:30px;
+            font-weight:bold;
+        }
+
+        .sidebar a{
+            color:white;
+            text-decoration:none;
+            padding:14px 22px;
+            display:flex;
+            align-items:center;
+            gap:12px;
+            transition:0.3s;
+        }
+
+        .sidebar a:hover{
+            background:#173f6b;
+        }
+
+        /* active page highlight */
+        .sidebar a.active{
+            background:#14532d;
+        }
+
+        /* push logout bottom */
+        .logout{
+            margin-top:auto;
+            margin-bottom:20px;
+        }
+
+        /* =========================
+           CONTENT
+        ========================= */
+        .content{
+            flex:1;
+            padding:40px;
+            overflow:auto;
+        }
+
+        .card{
+            border-radius:16px;
+            max-width:700px;
+            margin:auto;
+        }
+
+        .header{
+            font-size:22px;
+            font-weight:bold;
+            margin-bottom:20px;
+            color:#0f2d4d;
+        }
+    </style>
 </head>
+
 <body>
 
-<header>
-  <h1>Report Civic Issue</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="complaints.html">My Complaints</a>
-  </nav>
-</header>
+<div class="wrapper">
 
-<section class="hero">
+    <!-- ================= SIDEBAR ================= -->
+    <div class="sidebar">
 
-  <form id="issueForm">
+        <h4>
+            <i class="fa-solid fa-user"></i>
+            Citizen Panel
+        </h4>
 
-    <label>Issue Type</label><br>
-    <select id="issueType" required>
-      <option value="">Select Issue</option>
-      <option>Garbage</option>
-      <option>Water</option>
-      <option>Road</option>
-      <option>Electricity</option>
-      <option>Others</option>
-    </select><br><br>
+        <a href="citizen-dashboard.html">
+            <i class="fa-solid fa-list-check"></i>
+            My Complaints
+        </a>
 
-    <label>GHMC Zone</label><br>
-    <select id="zoneSelect" required>
-      <option value="">Select Zone</option>
-    </select><br><br>
+        <a href="report-issue.html" class="active">
+            <i class="fa-solid fa-triangle-exclamation"></i>
+            Report Issue
+        </a>
 
-    <label>GHMC Circle</label><br>
-    <select id="circleSelect" required disabled>
-      <option value="">Select Circle</option>
-    </select><br><br>
+        <a href="track.html">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            Track Complaint
+        </a>
 
-    <label>GHMC Ward</label><br>
-    <select id="wardSelect" required disabled>
-      <option value="">Select Ward</option>
-    </select><br><br>
+        <a href="login.html" class="logout">
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Logout
+        </a>
 
-    <label>Issue Address</label><br>
-    <input id="address" type="text" placeholder="Enter issue location" required><br><br>
-
-    <!-- 📷 PHOTO UPLOAD -->
-    <label>Upload / Capture Issue Photo</label><br>
-    <input
-      type="file"
-      id="issuePhoto"
-      accept="image/*"
-      capture="environment"
-      required
-    ><br><br>
-
-    <!-- 🔍 PREVIEW + DELETE -->
-    <div id="photoContainer">
-      <img
-        id="photoPreview"
-        style="max-width:100%; display:none; margin-bottom:10px;"
-      >
-
-      <button
-        type="button"
-        id="removePhotoBtn"
-        style="
-          display:none;
-          background:#b00020;
-          color:#fff;
-          border:none;
-          padding:8px 12px;
-          border-radius:4px;
-          cursor:pointer;
-        "
-      >
-        ❌ Remove Photo
-      </button>
     </div>
 
-    <br>
 
-    <!-- ✅ SUBMIT -->
-    <button class="btn" type="submit">
-      Submit Complaint
-    </button>
+    <!-- ================= CONTENT ================= -->
+    <div class="content">
 
-  </form>
+        <div class="header">
+            Report Issue ⚠️
+        </div>
 
-</section>
+        <div class="container">
 
-<!-- 🔐 AUTH CHECK -->
-<script src="js/auth.js"></script>
-<script>
-  checkAuth();
-</script>
+            <div class="card shadow p-4">
 
-<!-- 🧠 REPORT LOGIC -->
-<script src="js/script.js"></script>
+                <h4 class="text-center mb-4">Submit Complaint</h4>
+
+                <form id="issueForm" method="POST" enctype="multipart/form-data">
+
+                    <label class="fw-bold">Issue Type</label>
+                    <select name="type" class="form-control mb-3" required>
+                        <option value="">Select Department</option>
+                        <option>Sanitation</option>
+                        <option>Roads and Infrastructure</option>
+                        <option>Water Supply</option>
+                        <option>Health and Sanitation</option>
+                        <option>Parks and Recreation</option>
+                        <option>Street Lighting</option>
+                        <option>Building Permissions</option>
+                        <option>Waste Management</option>
+                    </select>
+
+                    <label class="fw-bold">Zone</label>
+                    <select id="zone" name="zone" class="form-control mb-3" required></select>
+
+                    <label class="fw-bold">Circle</label>
+                    <select id="circle" name="circle" class="form-control mb-3" required></select>
+
+                    <label class="fw-bold">Ward</label>
+                    <select id="ward" name="ward" class="form-control mb-3" required></select>
+
+                    <label class="fw-bold">Address</label>
+                    <input name="address" class="form-control mb-3" required>
+
+                    <label class="fw-bold">Photo</label>
+                    <input type="file" name="photo" class="form-control mb-4" accept="image/*" required>
+
+                    <button type="submit" class="btn btn-success w-100">
+                        Submit Complaint
+                    </button>
+
+                    <p id="msg" class="text-center mt-3"></p>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<!-- LOAD ORDER VERY IMPORTANT -->
+<script src="js/ghmc-data.js"></script>
+<script src="js/report-issue.js"></script>
 
 </body>
 </html>
